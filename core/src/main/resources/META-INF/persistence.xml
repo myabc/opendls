@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  <persistence-unit name="ApplicationEntityManager" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>org.opendls.model.User</class>
+    <class>org.opendls.model.Role</class>
+    <class>org.opendls.model.Collection</class>
+    <class>org.opendls.model.Item</class>
+    <class>org.opendls.model.ItemFile</class>
+    <class>org.opendls.model.dc.DCFormat</class>
+  </persistence-unit>
+</persistence>

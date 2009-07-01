@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE compass-core-meta-data PUBLIC
+    "-//Compass/Compass Core Meta Data DTD 1.0//EN"
+    "http://www.opensymphony.com/compass/dtd/compass-core-meta-data.dtd">
+
+<compass-core-meta-data>
+
+    <meta-data-group id="library" displayName="Library Meta Data">
+
+  <description>Library Meta Data</description>
+  <uri>http://opendls.org/library</uri>
+
+  <!--
+  <alias id="subject" displayName="Subject">
+
+  </alias>
+ -->
+
+  <alias id="item" displayName="Item">
+   <description>Item alias</description>
+   <uri>http://opendls.org/library/alias/item</uri>
+   <name>item</name>
+  </alias>
+
+  <meta-data id="subject" displayName="Subject">
+   <description>Subject keyword associated with an entity</description>
+   <uri>http://opendls.org/library/subject</uri>
+   <name>subject</name>
+  </meta-data>
+
+  <meta-data id="title" displayName="Title">
+   <description>Title associated with an item</description>
+   <uri>http://opendls.org/library/title</uri>
+   <name>title</name>
+  </meta-data>
+
+  <meta-data id="titleAlternative" displayName="TitleAlternative">
+   <description>Alternative title associated with an item</description>
+   <uri>http://opendls.org/library/titlealternative</uri>
+   <name>titleAlternative</name>
+  </meta-data>
+
+  <meta-data id="creator" displayName="Creator">
+   <description>Creator associated with an item</description>
+   <uri>http://opendls.org/library/creator</uri>
+   <name>creator</name>
+  </meta-data>
+
+  <meta-data id="contributor" displayName="Contributor">
+   <description>Contributor associated with an item</description>
+   <uri>http://opendls.org/library/contributor</uri>
+   <name>contributor</name>
+  </meta-data>
+
+
+ </meta-data-group>
+
+</compass-core-meta-data>

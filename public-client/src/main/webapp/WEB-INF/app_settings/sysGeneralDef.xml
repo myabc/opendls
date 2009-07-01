@@ -1,0 +1,20 @@
+<wddxPacket version='1.0'>
+<header>
+</header>
+<data>
+<struct>
+<var name='CONTACTEMAIL'>
+<string>john_does@opendls.org</string>
+</var>
+<var name='CONTACTNAME'>
+<string>John DOe</string>
+</var>
+<var name='ID'>
+<string>none</string>
+</var>
+<var name='NAME'>
+<string>Open Digital Library System</string>
+</var>
+</struct>
+</data>
+</wddxPacket>

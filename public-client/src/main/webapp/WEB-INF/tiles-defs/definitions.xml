@@ -1,0 +1,147 @@
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+ <!-- ============================= BLOCKS ============================= -->
+ <!--
+  these are specific blocks of content employed in the application
+  -->
+ <definition name=".blocks.custom" template="/WEB-INF/jsp/blocks/left_custom.jsp" />
+ <definition name=".blocks.resultsoptions" template="/WEB-INF/jsp/blocks/left_resultsoptions.jsp" />
+ <definition name=".blocks.functions" template="/WEB-INF/jsp/blocks/left_functions.jsp"
+  preparer="org.opendls.publicclient.tiles.FunctionsTileController"/>
+ <definition name=".blocks.links" template="/WEB-INF/jsp/blocks/left_links.jsp" />
+ <definition name=".blocks.quicksearch" template="/WEB-INF/jsp/blocks/left_quicksearch.jsp"
+  preparer="org.opendls.publicclient.tiles.QuickSearchTileController" />
+ <definition name=".blocks.itemoptions" template="/WEB-INF/jsp/blocks/left_itemoptions.jsp" />
+ <definition name=".blocks.search" template="/WEB-INF/jsp/blocks/left_search.jsp" />
+
+ <!-- =========================== TEMPLATES ============================ -->
+ <!--
+  these can be considered 'abstract' definitions, i.e. they are
+  inherited by the view definitions below.
+  these definitions should never be called as views by controllers.
+  -->
+ <definition name=".templates.default" template="/WEB-INF/jsp/tiles/defaultTemplate.jsp">
+  <put-attribute name="title" value="DLS: Digital Library System"/>
+  <put-attribute name="content" value="CHANGEME"/>
+  <put-attribute name="header" value="/WEB-INF/jsp/blocks/header.jsp"/>
+  <put-attribute name="footer" value="/WEB-INF/jsp/blocks/footer.jsp"/>
+  <!-- functions block shows on every page -->
+  <put-attribute name="functionsBlock" value=".blocks.functions" />
+  <!-- customizable blocks of content -->
+  <!--
+        <put-list-attribute name="contentBlocks">
+   <add-attribute value=".blocks.custom"/>
+   <add-attribute value=".blocks.quicksearch"/>
+   <add-attribute value=".blocks.links"/>
+  </put-list-attribute>
+         -->
+ </definition>
+
+ <definition name=".templates.blank" template="/WEB-INF/jsp/tiles/blankTemplate.jsp">
+  <put-attribute name="title" value="DLS: Digital Library System"/>
+  <put-attribute name="content" value="CHANGEME"/>
+ </definition>
+
+ <!-- Help Pages -->
+ <definition name=".templates.help" extends=".templates.default">
+  <put-attribute name="title" value="Help"/>
+ </definition>
+
+ <!-- ============================= VIEWS ============================== -->
+
+ <definition name="_views.home" extends=".templates.default">
+  <put-attribute name="content" value="/WEB-INF/jsp/syshome.jsp"/>
+ </definition>
+
+ <definition name="_views.displayitem" extends=".templates.default">
+  <put-attribute name="content" value="/WEB-INF/jsp/records/displayrecord.jsp"/>
+  <put-list-attribute name="contentBlocks">
+   <add-attribute value=".blocks.custom"/>
+   <add-attribute value=".blocks.itemoptions"/>
+   <add-attribute value=".blocks.quicksearch"/>
+   <add-attribute value=".blocks.links"/>
+  </put-list-attribute>
+ </definition>
+
+ <definition name="_views.search" extends=".templates.default">
+  <put-attribute name="content" value="/WEB-INF/jsp/records/searchform.jsp"/>
+ </definition>
+
+    <definition name="_views.searchresults" extends=".templates.default">
+        <put-attribute name="content" value="/WEB-INF/jsp/records/displayrecords.jsp"/>
+     <put-list-attribute name="contentBlocks">
+    <add-attribute value=".blocks.custom"/>
+    <add-attribute value=".blocks.resultsoptions"/>
+    <add-attribute value=".blocks.search"/>
+    <add-attribute value=".blocks.links"/>
+  </put-list-attribute>
+ </definition>
+
+ <definition name="_views.searchnoresults" extends=".templates.default">
+  <put-attribute name="content" value="results.jsp"/>
+  <put-list-attribute name="contentBlocks">
+   <add-attribute value=".blocks.custom"/>
+   <add-attribute value=".blocks.search"/>
+   <add-attribute value=".blocks.list"/>
+  </put-list-attribute>
+ </definition>
+
+ <definition name="_views.browsekeywords" extends=".templates.default">
+  <put-attribute name="content" value="results.jsp"/>
+ </definition>
+
+ <definition name="_views.getmoreinfo" extends=".templates.default">
+  <put-attribute name="content" value="/WEB-INF/jsp/records/getmoreinfo.jsp"/>
+  <put-list-attribute name="contentBlocks">
+   <add-attribute value=".blocks.custom"/>
+   <add-attribute value=".blocks.links"/>
+  </put-list-attribute>
+ </definition>
+
+ <definition name="_views.getmoreinfosent" extends=".templates.default">
+  <put-attribute name="content" value="/WEB-INF/jsp/records/getmoreinfosent.jsp"/>
+  <put-list-attribute name="contentBlocks">
+   <add-attribute value=".blocks.custom"/>
+   <add-attribute value=".blocks.links"/>
+  </put-list-attribute>
+ </definition>
+
+ <definition name="_views.imagedisplay" extends=".templates.blank">
+  <put-attribute name="content" value="/WEB-INF/jsp/records/imagedisplay.jsp"/>
+ </definition>
+
+ <!--  Help Pages -->
+
+ <definition name="_views.help.credits" extends=".templates.help">
+  <put-attribute name="content" value="/WEB-INF/jsp/help/credits.jsp"/>
+ </definition>
+
+ <definition name="_views.help.contactus" extends=".templates.help">
+  <put-attribute name="content" value="/WEB-INF/jsp/help/contactus.jsp"/>
+ </definition>
+
+ <definition name="_views.help.techinfo" extends=".templates.help">
+  <put-attribute name="content" value="/WEB-INF/jsp/help/techinfo.jsp"/>
+ </definition>
+
+ <definition name="_views.help.reportbugs" extends=".templates.help">
+  <put-attribute name="content" value="/WEB-INF/jsp/help/reportbugs.jsp"/>
+ </definition>
+
+ <definition name="_views.help.using" extends=".templates.help">
+  <put-attribute name="content" value="/WEB-INF/jsp/help/using.jsp"/>
+ </definition>
+
+ <definition name="_views.help.index" extends=".templates.help">
+  <put-attribute name="content" value="/WEB-INF/jsp/help/home.jsp"/>
+ </definition>
+
+ <definition name="_views.utils.indexitems" extends=".templates.default">
+  <put-attribute name="content" value="/WEB-INF/jsp/utils/indexitems.jsp"/>
+ </definition>
+
+</tiles-definitions>

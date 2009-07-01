@@ -1,0 +1,8 @@
+.classpath
+.project
+.settings
+.wtpmodules
+cobertura.ser
+velocity.log*
+private
+target

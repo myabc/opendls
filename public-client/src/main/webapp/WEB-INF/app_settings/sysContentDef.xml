@@ -1,0 +1,32 @@
+<wddxPacket version='1.0'>
+<header>
+</header>
+<data>
+<struct>
+<var name='LINKS'>
+<array length='2'>
+<array length='5'>
+<string>OpenDLS Homepage</string>
+<string></string>
+<string></string>
+<string></string>
+<string></string>
+</array>
+<array length='5'>
+<string>http://opendls.org/</string>
+<string></string>
+<string></string>
+<string></string>
+<string></string>
+</array>
+</array>
+</var>
+<var name='SIDEBAR'>
+<string></string>
+</var>
+<var name='WELCOME'>
+<string></string>
+</var>
+</struct>
+</data>
+</wddxPacket>

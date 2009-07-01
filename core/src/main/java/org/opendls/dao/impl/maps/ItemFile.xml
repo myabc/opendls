@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ItemFile">
+
+ <resultMap id="result" class="org.opendls.model.ItemFile">
+  <result property="id" column="file_Id" columnIndex="1"/>
+     <result property="fileName" column="fileName" columnIndex="2"/>
+     <result property="fileSize" column="fileSize" columnIndex="3"/>
+     <result property="fileInfo" column="fileInfo" columnIndex="4"/>
+     <result property="format.id" column="format_Id" columnIndex="5"/>
+     <result property="volumeId" column="volume_Id" columnIndex="6"/>
+     <result property="dateCreated" column="date_created" columnIndex="7"/>
+     <result property="dateModified" column="date_modified" columnIndex="8"/>
+     <result property="userId" column="user_Id" columnIndex="9"/>
+     <result property="thumbFile" column="thumbFile" columnIndex="10"/>
+     <result property="originalFileName" column="originalFileName" columnIndex="11"/>
+ </resultMap>
+
+ <select id="getAllFiles" resultMap="result">
+  select file_Id, fileName, fileSize, fileInfo, format_Id, volume_Id,
+  date_created, date_modified, user_Id, thumbFile, originalFileName
+  from files
+ </select>
+
+<!--
+public static final String DELETE_FROM_ITEM_FILE_INDEX_SQL =
+ "DELETE FROM dfIndex WHERE file_Id = ?";
+
+public static final String DELETE_FILE_SQL =
+    "DELETE FROM files " +
+    "WHERE  file_Id = ?";
+
+public static final String DELETE_FROM_THUMB_INDEX_SQL =
+ "DELETE FROM thumbIndex WHERE file_Id = ?";
+
+public static final String GET_ASSOC_FILES_SQL =
+    "SELECT fi.* " +
+    "FROM   files fi " +
+    "WHERE  fi.file_Id IN (SELECT file_Id FROM dfIndex " +
+    "                      WHERE data_Id = '#variables.data_Id_value#')";
+
+public static final String GET_FILE_INFO_SQL =
+    "SELECT  * " +
+    "FROM    files " +
+    "WHERE   file_Id = '#variables.currentFile#' ";
+
+public static final String GET_FILES_2_SQL =
+    "SELECT  fi.file_Id, " +
+    "        fi.fileName, " +
+    "        fi.originalFileName, " +
+    "        fi.thumbFile, " +
+    "        fo.format_Id, " +
+    "        fo.formatName, " +
+    "        fi.volume_Id, " +
+    "        t.typeName " +
+    "FROM    files fi, " +
+    "        types t, " +
+    "        formats fo " +
+    "WHERE   t.type_Id = fo.type_Id AND " +
+    "        fo.format_Id = fi.format_Id AND" +
+    "        fi.user_Id = '#session.user.mail#' AND" +
+    "        fi.file_Id NOT IN (SELECT file_Id FROM dfIndex)";
+
+public static final String GET_FILES_SQL =
+    "SELECT  fi.file_Id, " +
+    "        fi.fileName, " +
+    "        fi.originalFileName, " +
+    "        fi.thumbFile, " +
+    "        fo.format_Id, " +
+    "        fo.formatName, " +
+    "        fi.volume_Id, " +
+    "        t.typeName " +
+    "FROM    files fi, " +
+    "        types t, " +
+    "        formats fo " +
+    "WHERE   t.type_Id = fo.type_Id AND " +
+    "        fo.format_Id = fi.format_Id AND " +
+    "        <cfif showMyFiles>fi.user_Id = '#variables.tempUserMail#' AND</cfif> " +
+    "        fi.file_Id NOT IN (SELECT file_Id FROM dfIndex) ";
+
+public static final String GET_FILES1_SQL =
+    "SELECT  fi.file_Id, " +
+    "        fi.fileName, " +
+    "        fi.originalFileName, " +
+    "        fi.thumbFile, " +
+    "        fo.format_Id, " +
+    "        fo.formatName, " +
+    "        fi.volume_Id, " +
+    "        t.typeName " +
+    "FROM    files fi, " +
+    "        types t, " +
+    "        formats fo " +
+    "WHERE   t.type_Id = fo.type_Id AND " +
+    "        fo.format_Id = fi.format_Id AND " +
+    "        <cfif showMyFiles>fi.user_Id = '#variables.tempUserMail#' AND</cfif> " +
+    "        fi.file_Id NOT IN (SELECT file_Id FROM dfIndex)";
+
+public static final String INSERT_FILE_SQL =
+    "INSERT INTO files ( " +
+    "       file_Id, " +
+    "       fileName, " +
+    "       fileSize, " +
+    "       fileInfo, " +
+    "       format_Id, " +
+    "       volume_Id, " +
+    "       date_created, " +
+    "       date_modified, " +
+    "       user_Id, " +
+    "       thumbFile, " +
+    "       originalFileName " +
+    ") VALUES ( " +
+    "       '#variables.file_Id#', " +
+    "       '#variables.newFileName#', " +
+    "       '#variables.fileSize#', " +
+    "       <cfif len(variables.fileInfo)>'#variables.fileInfo#'<cfelse>NULL</cfif>, " +
+    "       '#variables.format_Id#', " +
+    "       #val(variables.volume_Id)#, " +
+    "       #createODBCDate(variables.date_created)#, " +
+    "       #createODBCDate(variables.date_modified)#, " +
+    "       '#variables.user_Id#', " +
+    "       '#variables.newThumbFileName#', " +
+    "       '#variables.currentFile#' " +
+    ")";
+-->
+
+</sqlMap>

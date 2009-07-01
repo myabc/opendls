@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Item">
+
+ <resultMap id="result" class="org.opendls.model.Item">
+  <result property="id" column="data_Id" columnIndex="1"/>
+     <result property="title" column="title" columnIndex="2"/>
+     <result property="titleAlternative" column="title_alternative" columnIndex="3"/>
+     <result property="creator" column="creator" columnIndex="4"/>
+     <result property="description" column="description" columnIndex="5"/>
+     <result property="descriptionTableOfContents" column="description_tableOfContents" columnIndex="6"/>
+     <result property="descriptionAbstract" column="description_abstract" columnIndex="7"/>
+     <result property="subject" column="subject" columnIndex="8"/>
+     <result property="publisher" column="publisher" columnIndex="9"/>
+     <result property="contributor" column="contributor" columnIndex="10"/>
+     <result property="contributorOrgCode" column="contributor_orgCode" columnIndex="11"/>
+     <result property="dateCreated" column="date_created" columnIndex="12"/>
+     <result property="dateValid" column="date_valid" columnIndex="13"/>
+     <result property="dateAvailable" column="date_available" columnIndex="14"/>
+     <result property="dateIssued" column="date_issued" columnIndex="15"/>
+     <result property="dateModified" column="date_modified" columnIndex="16"/>
+     <result property="source" column="source" columnIndex="17"/>
+     <result property="language.language" column="language_Id" columnIndex="18"/>
+  <result property="relations.isVersionOf" column="relation_isVersionOf" columnIndex="19"/>
+  <result property="relations.hasVersion" column="relation_hasVersion" columnIndex="20"/>
+  <result property="relations.isReplacedBy" column="relation_isReferencedBy" columnIndex="21"/>
+  <result property="relations.replaces" column="relation_replaces" columnIndex="22"/>
+  <result property="relations.isRequiredBy" column="relation_isRequiredBy" columnIndex="23"/>
+  <result property="relations.requires" column="relation_requires" columnIndex="24"/>
+  <result property="relations.isPartOf" column="relation_isPartOf" columnIndex="25"/>
+  <result property="relations.hasPart" column="relation_hasPart" columnIndex="26"/>
+  <result property="relations.isReferencedBy" column="relation_isReferencedBy" columnIndex="27"/>
+  <result property="relations.references" column="relation_references" columnIndex="28"/>
+  <result property="relations.isFormatOf" column="relation_isFormatOf" columnIndex="29"/>
+  <result property="relations.hasFormat" column="relation_hasFormat" columnIndex="30"/>
+  <result property="coverage.spatialMinLat" column="coverage_spatial_minLat" columnIndex="31"/>
+  <result property="coverage.spatialMinLong" column="coverage_spatial_minLong" columnIndex="32"/>
+  <result property="coverage.spatialMaxLat" column="coverage_spatial_maxLat" columnIndex="33"/>
+  <result property="coverage.spatialMaxLong" column="coverage_spatial_maxLong" columnIndex="34"/>
+  <result property="coverage.temporal" column="coverage_temporal" columnIndex="35"/>
+     <result property="rights" column="rights" columnIndex="36"/>
+     <result property="audience" column="audience" columnIndex="37"/>
+     <result property="collection.id" column="library_Id" columnIndex="38"/>
+     <result property="status" column="status" columnIndex="39"/>
+     <result property="dataCreator.name" column="dataCreator_name" columnIndex="40"/>
+  <result property="dataCreator.email" column="dataCreator_email" columnIndex="41"/>
+ </resultMap>
+
+ <resultMap id="itemFileResult" class="org.opendls.model.ItemFile">
+  <result property="id" column="file_Id" columnIndex="1"/>
+     <result property="fileName" column="fileName" columnIndex="2"/>
+     <result property="fileSize" column="fileSize" columnIndex="3"/>
+     <result property="fileInfo" column="fileInfo" columnIndex="4"/>
+     <result property="format.id" column="format_Id" columnIndex="5"/>
+     <result property="format.name" column="formatName" columnIndex="6" />
+     <result property="volumeId" column="volume_Id" columnIndex="7"/>
+     <result property="dateCreated" column="date_created" columnIndex="8"/>
+     <result property="dateModified" column="date_modified" columnIndex="9"/>
+     <result property="userId" column="user_Id" columnIndex="10"/>
+     <result property="thumbFile" column="thumbFile" columnIndex="11"/>
+     <result property="originalFileName" column="originalFileName" columnIndex="12"/>
+ </resultMap>
+
+ <!-- this result map is used for results employed by Lucene -->
+ <resultMap id="resultForIndexing" class="org.opendls.model.Item">
+  <result property="id" column="data_Id" columnIndex="1"/>
+     <result property="title" column="title" columnIndex="2"/>
+     <result property="titleAlternative" column="title_alternative" columnIndex="3"/>
+     <result property="creator" column="creator" columnIndex="4"/>
+     <result property="descriptionTableOfContents" column="description_tableOfContents" columnIndex="5"/>
+     <result property="descriptionAbstract" column="description_abstract" columnIndex="6"/>
+     <result property="subject" column="subject" columnIndex="7"/>
+     <result property="publisher" column="publisher" columnIndex="8"/>
+     <result property="contributor" column="contributor" columnIndex="9"/>
+     <result property="contributorOrgCode" column="contributor_orgCode" columnIndex="10"/>
+     <result property="dateCreated" column="date_created" columnIndex="11"/>
+     <result property="dateValid" column="date_valid" columnIndex="12"/>
+     <result property="dateAvailable" column="date_available" columnIndex="13"/>
+     <result property="dateIssued" column="date_issued" columnIndex="14"/>
+     <result property="dateModified" column="date_modified" columnIndex="15"/>
+     <result property="source" column="source" columnIndex="16"/>
+     <result property="language.language" column="language_Id" columnIndex="17"/>
+     <result property="rights" column="rights" columnIndex="18"/>
+     <result property="audience" column="audience" columnIndex="19"/>
+     <result property="collection.id" column="library_Id" columnIndex="20"/>
+     <result property="collection.name" column="libraryName" columnIndex="21"/>
+     <result property="status" column="status" columnIndex="22"/>
+     <result property="dataCreator.name" column="dataCreator_name" columnIndex="23"/>
+  <result property="dataCreator.email" column="dataCreator_email" columnIndex="24"/>
+  <result property="thumbFile.format.id" column="format_Id" columnIndex="25"/>
+  <result property="thumbFile.format.dcType" column="type_Id" columnIndex="26"/>
+  <result property="thumbFile.thumbFile" column="thumbFile" columnIndex="27"/>
+ </resultMap>
+
+ <select id="getItem" resultMap="result">
+ select * from data d
+ where data_Id = #id#
+ </select>
+
+ <select id="getItemFiles" resultMap="itemFileResult">
+ select fi.*, fo.formatName from files fi, formats fo, dfIndex df
+ where fo.format_Id = fi.format_Id
+ and fi.file_Id = df.file_Id
+ and df.data_Id = #id#
+ </select>
+
+ <select id="getAllItems" resultMap="resultForIndexing">
+ select d.data_Id, d.title, d.title_alternative, d.creator,
+ d.description_tableOfContents, d.description_abstract, d.subject,
+ d.publisher, d.contributor, d.contributor_orgCode, d.date_created,
+ d.date_valid, d.date_available, d.date_issued, d.date_modified,
+ d.source, d.language_Id, d.rights, d.audience, d.status,
+ d.dataCreator_name, d.dataCreator_email,
+ li.library_Id, li.libraryName,
+ fi.thumbFile,
+ fo.format_Id, fo.formatName, fo.type_Id
+ from data d, libraries li, files fi, formats fo, thumbIndex ti
+ where li.library_Id = d.library_Id
+ and fo.format_Id = fi.format_Id
+ and fi.file_Id = ti.file_Id
+ and ti.data_Id = d.data_Id
+ and d.status = 1
+ </select>
+
+ <update id="changeItemStatus">
+ update data set status = #value# where data_Id = #value2#
+ </update>
+
+
+<!--
+
+
+
+
+
+public static final String INSERT_ITEM_SQL =
+    "INSERT INTO data (" +
+    "           data_Id," +
+    "           title," +
+    "           title_alternative," +
+    "           creator," +
+    "           description," +
+    "           description_tableOfContents," +
+    "           description_abstract," +
+    "           subject," +
+    "           publisher," +
+    "           contributor," +
+    "           contributor_orgCode," +
+    "           date_created," +
+    "           date_valid," +
+    "           date_available," +
+    "           date_issued," +
+    "           date_modified," +
+    "           source," +
+    "           language_Id," +
+    "           relation_isVersionOf," +
+    "           relation_hasVersion," +
+    "           relation_isReplacedBy," +
+    "           relation_replaces," +
+    "           relation_isRequiredBy," +
+    "           relation_requires," +
+    "           relation_isPartOf," +
+    "           relation_hasPart," +
+    "           relation_isReferencedBy," +
+    "           relation_references," +
+    "           relation_isFormatOf," +
+    "           relation_hasFormat," +
+    "           coverage_spatial_minLat," +
+    "           coverage_spatial_minLong," +
+    "           coverage_spatial_maxLat," +
+    "           coverage_spatial_maxLong," +
+    "           coverage_temporal," +
+    "           rights," +
+    "           audience," +
+    "           status" +
+    //"           library_Id," +
+    "           dataCreator_name," +
+    "           dataCreator_email," +
+    "           ) VALUES (" +
+    "           ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
+    "           ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
+    "           ?, ?, ?, ?, ?" +
+    "           ?, ?, ?, ?, ? " +
+    "           )";
+
+public static final String INSERT_INTO_DATA_QUICK_SQL =
+    "INSERT INTO data ( " +
+    "    data_Id, " +
+    "    title, " +
+    "    <cfif len(trim(form.title_alternative))>title_alternative,</cfif> " +
+    "    creator, " +
+    "" +
+    "    <cfif len(trim(form.publisher))>publisher,</cfif> " +
+    ""    +
+    "    <cfif len(trim(form.contributor))> " +
+    "    contributor, " +
+    "    contributor_orgCode, " +
+    "    </cfif>  " +
+    "" +
+    "    <cfif len(trim(form.subject))>subject,</cfif> " +
+    "" +
+    "    <cfif isDate(form.date_created)>date_created,</cfif> " +
+    "    date_issued, " +
+    "    date_modified, " +
+    "    <cfif len(trim(form.source))>source,</cfif> " +
+    "    language_Id, " +
+    "    library_Id, " +
+    "    dataCreator_name, " +
+    "    dataCreator_email, " +
+    "    status " +
+    ") VALUES ( " +
+    "    '#data_Id#', " +
+    "    '#title#', " +
+    "    <cfif len(trim(form.title_alternative))>'#title_alternative#',</cfif> " +
+    "    '#creator#', " +
+    "     " +
+    " " +
+    "    <cfif len(trim(form.publisher))>'#trim(form.publisher)#',</cfif>"  +
+    " " +
+    "    <cfif len(trim(form.contributor))> " +
+    "    '#trim(form.contributor)#', " +
+    "    #val(contributor_orgCode)#, " +
+    "    </cfif> " +
+    " " +
+    "    <cfif len(trim(form.subject))>'#trim(form.subject)#',</cfif> " +
+    "     " +
+    "    <cfif isDate(form.date_created)>#createODBCDate(form.date_created)#,</cfif> " +
+    "    #createODBCDate(now())#, " +
+    "    #createODBCDate(now())#, " +
+    "     " +
+    "    <cfif len(trim(form.source))>'#trim(form.source)#',</cfif> " +
+    "     " +
+    "    'EN', " +
+    "    '#library_Id#', " +
+    "    '#form.dataCreator_name#', " +
+    "    '#form.dataCreator_email#', " +
+    "    0 " +
+    ") ";
+
+// TODO: Make part of a transaction with insertIntoData, insertIntoThumbIndex
+public static final String INSERT_INTO_INDEX_SQL =
+    " INSERT INTO dfIndex (file_Id,data_Id)" +
+    " VALUES ( " +
+    "     '#i#', " +
+    "     '#data_Id#' " +
+    "     ) ";
+
+//<cfloop list="#form.selectedFiles#" index="i">
+public static final String INSERT_INTO_INDEX1_SQL =
+    " INSERT INTO dfIndex (file_Id,data_Id)" +
+    " VALUES ( "+
+    "    '#i#', "+
+    "    '#data_Id#'"+
+    "    ) ";
+//</cfloop>
+
+// TODO: Make part of a transaction with insertIntoData, insertIntoIndex
+public static final String INSERT_INTO_THUMB_INDEX_SQL =
+    " INSERT INTO thumbIndex (file_Id,data_Id)" +
+    "    VALUES ( " +
+    "        '#listFirst(form.selectedFiles)#', " +
+    "        '#data_Id#' ";
+public static final String INSERT_INTO_THUMB_INDEX1_SQL =
+    "INSERT INTO thumbIndex (file_Id,data_Id) " +
+    "VALUES ( " +
+    "    '#listFirst(form.selectedFiles)#', " +
+    "    '#data_Id#' " +
+    ") ";
+
+public static final String MOVE_RECORDS_SQL =
+    "UPDATE  data " +
+    "SET     status = #variables.newStatusValue# " +
+    "<cfif variables.newStatusValue eq 1> " + // Publish
+    "        ,date_available = #createODBCDate(now())# " +
+    "        </cfif> " +
+    "WHERE   data_Id IN ( ? ) "; // should be  alist
+
+public static final String UPDATE_ITEM_SQL =
+    "UPDATE     data " +
+    "SET        title = ?," +
+    "           title_alternative = ?," +
+    "           creator = ?," +
+    "           description = ?," +
+    "           description_tableOfContents = ?," +
+    "           description_abstract = ?," +
+    "           subject = ?," +
+    "           publisher = ?," +
+    "           contributor = ?," +
+    "           contributor_orgCode = ?," +
+    "           date_created = ?," +
+    "           date_valid = ?," +
+    "           date_available = ?," +
+    "           date_issued = ?," +
+    "           date_modified = ?," +
+    "           source = ?," +
+    "           language_Id = ?," +
+    "           relation_isVersionOf = ?," +
+    "           relation_hasVersion = ?," +
+    "           relation_isReplacedBy = ?," +
+    "           relation_replaces = ?," +
+    "           relation_isRequiredBy = ?," +
+    "           relation_requires = ?," +
+    "           relation_isPartOf = ?," +
+    "           relation_hasPart = ?," +
+    "           relation_isReferencedBy = ?," +
+    "           relation_references = ?," +
+    "           relation_isFormatOf = ?," +
+    "           relation_hasFormat = ?," +
+    "           coverage_spatial_minLat = ?," +
+    "           coverage_spatial_minLong = ?," +
+    "           coverage_spatial_maxLat = ?," +
+    "           coverage_spatial_maxLong = ?," +
+    "           coverage_temporal = ?," +
+    "           rights = ?," +
+    "           audience = ?," +
+                // library_Id = ?,
+    "           status = ?," +
+    "           dataCreator_name = ?," +
+    "           dataCreator_email = ?" +
+    "WHERE      data_Id = ?";
+-->
+
+</sqlMap>

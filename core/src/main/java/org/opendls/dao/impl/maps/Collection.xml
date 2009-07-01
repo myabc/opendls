@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Collection">
+
+ <resultMap id="result" class="org.opendls.model.Collection">
+  <result property="id" column="library_Id" columnIndex="1" />
+  <result property="name" column="libraryName" columnIndex="2" />
+  <result property="userInterface" column="interface" columnIndex="3" />
+  <result property="pageContent" column="content" columnIndex="4" />
+  <result property="contactName" column="contactName" columnIndex="5" />
+  <result property="contactEmail" column="contactEmail" columnIndex="6" />
+  <result property="contactTel" column="contactTel" columnIndex="7" />
+  <result property="contactFax" column="contactFax" columnIndex="8" />
+  <result property="ownerName" column="ownerName" columnIndex="9" />
+  <result property="ownerOrgCode" column="ownerOrgCode" columnIndex="10" />
+  <result property="virtual" column="virtual" columnIndex="11" />
+  <result property="showInList" column="showInList" columnIndex="12" />
+  <result property="virtualType" column="virtualType" columnIndex="13" />
+     <!--<result property="items"/>-->
+ </resultMap>
+
+ <select id="getCollections" resultMap="result">
+  select * from collections
+  where showInList = 1
+  order by libraryName asc
+ </select>
+
+ <select id="getCollection" resultMap="result">
+  select library_Id, libraryName, interface, content, contactName,
+  contactEmail, contactTel, contactFax, ownerName, ownerOrgCode,
+  virtual, showInList, virtualType from libraries
+  where library_Id = #value#
+ </select>
+
+ <select id="getCollectionNamesList" resultClass="java.lang.String">
+  select libraryName as value from libraries
+ </select>
+
+ <insert id="insertCollection">
+    insert into libraries
+  ( library_Id,
+         libraryName,
+         interface,
+         content,
+         ownerName,
+         ownerOrgCode,
+         contactName,
+         contactEmail,
+         contactTel,
+         contactFax,
+         showInList )
+     values (
+         #id#,
+         #name#,
+         #userInterface#,
+         #pageContent#,
+         #ownerName#,
+         #ownerOrgCode#,
+         #contactName#,
+         #contactEmail#,
+         #contactTel#,
+         #contactFax#,
+         #showInList# )
+ </insert>
+
+ <update id="updateCollection">
+ update libraries
+ set libraryName = #name#,
+ contactName = #contactName#,
+ contactEmail = #contactEmail#,
+ contactTel = #contactTel#,
+    contactFax = #contactFax#,
+ ownerName = #ownerName#,
+ ownerOrgCode = #ownerOrgCame#,
+ showInList = #showInList#
+ where library_Id = #id#
+ </update>
+
+ <update id="updatePageContent">
+ update libraries
+ set interface = #userInterface#
+ where library_Id = #id#
+ </update>
+
+ <update id="updateUserInterface">
+ update libraries
+ set content = #pageContent#
+ where library_Id = #id#
+ </update>
+
+</sqlMap>

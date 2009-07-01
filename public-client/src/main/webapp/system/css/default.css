@@ -1,0 +1,162 @@
+body {
+ background : White;
+ margin-top : 0px;
+}
+
+
+a:Hover  {
+     text-decoration : underline;
+     color : 996600;
+     }
+
+a:link  {
+ text-decoration : none;
+ color : #000099;
+}
+
+a:visited {
+ color : #000066;
+}
+
+p.bodytext {
+ font-size : 12px;
+ font-family : verdana,arial, geneva,helvetica,sans-serif;
+ line-height : 14px;
+}
+
+.ibtext {
+ font-size : 12px;
+ font-family : verdana,arial, geneva,helvetica,sans-serif;
+ line-height : 14px;
+}
+
+h2,.h2,h3,.h3  {
+ font-size : 14pt;
+ font-family : verdana,arial, geneva,helvetica,sans-serif;
+ font-weight : bold;
+ line-height : 18px;
+ font-style : italic;
+}
+
+table.infobox {
+ border : groove 2;
+ font : normal normal 9pt verdana,sans-serif;
+}
+
+table.infobox th {
+ border : 2 outset;
+ font : normal normal 9pt verdana,sans-serif;
+}
+
+h4,.h4  {
+ font-size : 12pt;
+ font-family : verdana,arial, geneva,helvetica, sans-serif;
+ font-weight : bold;
+ color : black;
+}
+
+tt  {
+ font-size : 12px;
+ font-family : verdana,monospace;
+ color : 999966;
+ line-height : 16px;
+}
+
+.copyright  {
+ font-size : 10px;
+ font-family : verdana,sans-serif;
+ font-weight : normal;
+ font-style : normal;
+ color: #ffffff;
+}
+
+.micro  {
+ font-size : 7pt;
+ font-family : verdana,sans-serif;
+ font-weight : normal;
+ font-style : normal;
+ line-height : 16px;
+ text-indent : 0px;
+}
+
+.big  {
+ font-size : 11pt;
+ font-family : verdana,sans-serif;
+ font-style : normal;
+ line-height : 17px;
+ text-indent : 0px;
+}
+
+.tableborder  {
+ border-style : ridge;
+ border-width : 3;
+}
+
+.headline {
+ letter-spacing : 0px;
+ font-family :  verdana,arial, sans-serif;
+ text-transform :  uppercase;
+}
+
+.buttn  {
+ width:70px;
+ font-size : 9pt;
+ font-family : verdana,arial,sans-serif;
+ font-weight : normal;
+ font-style : normal;
+ text-indent : 0px;
+ line-height : 17px;
+}
+
+form {
+ margin : 0px;
+}
+
+.alphapage_select {
+ font : 12px verdana,Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ border : 1 outset;
+}
+
+.query_infonav {
+ font : 12px verdana,Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ border : 1 outset;
+}
+
+.displayoptions, .displayoptions td {
+ font : 11px verdana,Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ border : 1 outset;
+ color: #ffffff;
+}
+
+.genericinput {
+ font : 12px verdana,Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ border : 1 inset;
+}
+
+.generic_submit {
+ font : 12px verdana,Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ border : 1 outset;
+}
+
+.fieldname {
+ font : lighter 12px verdana,Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+.fielddata {
+ font : bolder 12px verdana,Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+.fielddatainput {
+ font : lighter 12px verdana,Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+.texthighlight {
+ font : bold 14px verdana,Arial, Helvetica, sans-serif;
+ background: #ffcc66;
+}
+.smallinfo {
+ font : 9px verdana,Arial, Helvetica, sans-serif;
+}
+.midinfo {
+ font : 11px verdana,Arial, Helvetica, sans-serif;
+}

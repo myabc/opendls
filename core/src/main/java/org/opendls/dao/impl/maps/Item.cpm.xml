@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE compass-core-mapping PUBLIC
+    "-//Compass/Compass Core Mapping DTD 1.0//EN"
+    "http://www.opensymphony.com/compass/dtd/compass-core-mapping.dtd">
+
+<compass-core-mapping package="org.opendls.model">
+
+ <class name="Item" alias="${library.item}" > <!-- root="false" -->
+  <id name="id" />
+
+  <property name="subject">
+   <meta-data boost="2">${library.subject}</meta-data>
+  </property>
+
+  <property name="title">
+   <meta-data>${library.title}</meta-data>
+  </property>
+
+  <property name="titleAlternative">
+   <meta-data>${library.titleAlternative}</meta-data>
+  </property>
+
+  <property name="creator">
+   <meta-data>${library.creator}</meta-data>
+  </property>
+
+  <property name="contributor">
+   <meta-data>${library.contributor}</meta-data>
+  </property>
+
+
+ </class>
+
+</compass-core-mapping>

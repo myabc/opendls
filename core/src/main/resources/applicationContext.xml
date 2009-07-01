@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+       default-lazy-init="true">
+
+ <!-- ========================= DAO DEFINITIONS: HIBERNATE IMPLEMENTATIONS ========================= -->
+
+ <bean id="itemDao" class="org.opendls.dao.jpa.ItemDaoJpa"/>
+
+ <bean id="itemFileDao" class="org.opendls.dao.jpa.ItemFileDaoJpa"/>
+
+ <bean id="collectionDao" class="org.opendls.dao.jpa.CollectionDaoJpa"/>
+
+ <bean id="formatDao" class="org.opendls.dao.jpa.FormatDaoJpa"/>
+
+
+ <!-- ========================= SERVICE DEFINITIONS: IMPLEMENTATIONS ========================= -->
+
+ <bean id="itemService" class="org.opendls.service.impl.ItemServiceImpl">
+  <property name="itemDao"><ref bean="itemDao" /></property>
+  <!-- <property name="mailSender"><ref bean="mailSender" /></property> -->
+ </bean>
+
+ <bean id="fileService" class="org.opendls.service.impl.FileServiceImpl">
+  <property name="itemFileDao"><ref bean="itemFileDao"/></property>
+ </bean>
+
+ <bean id="collectionService" class="org.opendls.service.impl.CollectionServiceImpl">
+  <property name="collectionDao"><ref bean="collectionDao"/></property>
+ </bean>
+
+ <bean id="formatService" class="org.opendls.service.impl.FormatServiceImpl">
+  <property name="formatDao"><ref bean="formatDao"/></property>
+ </bean>
+
+
+</beans>

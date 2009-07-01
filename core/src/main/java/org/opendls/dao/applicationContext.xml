@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+
+ <!-- ========================= GENERAL DEFINITIONS ========================= -->
+
+ <bean id="propertyConfigurer"
+  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  <property name="locations">
+   <list>
+      <value>classpath:jdbc.properties</value>
+      <value>classpath:mail.properties</value>
+     </list>
+  </property>
+ </bean>
+
+    <!-- Enable @Transactional support -->
+    <tx:annotation-driven/>
+
+    <!-- Enable @AspectJ support -->
+    <aop:aspectj-autoproxy/>
+
+    <aop:config>
+        <aop:advisor id="managerTx" advice-ref="txAdvice" pointcut="execution(* *..service.*Manager.*(..))"/>
+    </aop:config>
+
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+ <!-- ========================= RESOURCE DEFINITIONS ========================= -->
+
+ <bean name="dataSource"
+  class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+     <property name="driverClassName"><value>${db.driver}</value></property>
+     <property name="url"><value>${db.url}</value></property>
+     <property name="username"><value>${db.username}</value></property>
+     <property name="password"><value>${db.password}</value></property>
+  <property name="maxActive" value="30"/>
+        <property name="maxIdle" value="10"/>
+        <property name="maxWait" value="1000"/>
+        <property name="defaultAutoCommit" value="true"/>
+ </bean>
+
+
+ <!-- Hibernate setup -->
+ <!-- Hibernate SessionFactory -->
+ <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+  <property name="dataSource" ref="dataSource"/>
+  <property name="mappingResources">
+   <list>
+    <value>org.opendls/model/Collection.hbm.xml</value>
+    <value>org.opendls/model/Format.hbm.xml</value>
+    <value>org.opendls/model/ItemFile.hbm.xml</value>
+    <value>org.opendls/model/Item.hbm.xml</value>
+    <!-- <value>org.opendls/model/User.hbm.xml</value> -->
+   </list>
+  </property>
+  <property name="hibernateProperties">
+   <props>
+    <prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+    <prop key="hibernate.connection.show_sql">true</prop>
+    <!-- <prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>-->
+   </props>
+  </property>
+ </bean>
+
+ <!-- Transaction manager for a single JDBC DataSource (alternative to JTA) -->
+ <bean name="transactionManager"
+  class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+  <property name="sessionFactory" ref="sessionFactory" />
+ </bean>
+
+ <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  <property name="host" value="${mail.host}"/>
+ </bean>
+
+
+ <!-- COMPASS START -->
+ <!--
+ <bean id="hibernateGpsDevice"
+   class="org.compass.spring.device.hibernate.SpringHibernate3GpsDevice">
+  <property name="name"><value>hibernateDevice</value></property>
+  <property name="sessionFactory" ref="sessionFactory"/>
+ </bean>
+
+ <bean id="compass" class="org.compass.spring.LocalCompassBean">
+  <property name="resourceLocations">
+   <list>
+    <value>classpath:org.opendls/dao/impl/maps/library.cmd.xml</value>
+                <value>classpath:org.opendls/dao/impl/maps/Item.cpm.xml</value>
+                <value>classpath:org.opendls/dao/impl/maps/Collection.cpm.xml</value>
+   </list>
+  </property>
+  <property name="compassSettings">
+   <props>
+    <prop key="compass.engine.connection">file://${user.home}/opendls/index/</prop>
+    <prop key="compass.transaction.factory">org.compass.spring.transaction.SpringSyncTransactionFactory</prop>
+   </props>
+  </property>
+  <property name="transactionManager">
+   <ref bean="transactionManager"/>
+  </property>
+ </bean>
+
+ <bean id="compassGps" class="org.compass.gps.impl.SingleCompassGps"
+  init-method="start" destroy-method="stop">
+  <property name="compass"><ref bean="compass"/></property>
+  <property name="gpsDevices">
+   <list>
+    <ref local="hibernateGpsDevice"/>
+   </list>
+  </property>
+ </bean>
+  -->
+
+ <!--
+ <bean id="luceneDirectory" class="org.opendls.search.DirectoryBean">
+  <property name="create">
+   <value>false</value>
+  </property>
+  <property name="path">
+   <value>/opendls/index/</value>
+  </property>
+ </bean>
+ -->
+
+
+
+
+</beans>

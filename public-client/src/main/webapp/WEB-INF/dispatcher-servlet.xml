@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+       default-lazy-init="true">
+
+ <!-- ========================= CONTROLLER DEFINITIONS ========================= -->
+
+ <!--
+ <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+ <bean id="themeChangeInterceptor" class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
+ -->
+
+ <bean id="collectionContextChangeInterceptor"
+  class="org.opendls.publicclient.servlet.collection.CollectionContextChangeInterceptor">
+  <property name="collectionContextResolver" ref="collectionContextResolver" />
+ </bean>
+
+    <bean id="homeController"
+     class="org.opendls.publicclient.controller.HomeController">
+     <property name="collectionService">
+      <ref bean="collectionService"/>
+     </property>
+    </bean>
+
+<!--
+ <bean id="searchController"
+  class="org.compass.spring.web.mvc.CompassSearchController">
+  <property name="compass"><ref bean="compass"/></property>
+  <property name="searchView"><value>.views.search</value></property>
+  <property name="searchResultsView"><value>.views.searchresults</value></property>
+  <property name="pageSize"><value>10</value></property>
+ </bean>
+
+ <bean id="indexController"
+  class="org.compass.spring.web.mvc.CompassIndexController">
+  <property name="compassGps"><ref bean="compassGps"/></property>
+  <property name="indexView"><value>.views.utils.indexitems</value></property>
+  <property name="indexResultsView"><value>.views.utils.indexitems</value></property>
+ </bean>
+  -->
+
+    <bean id="itemDisplayController"
+     class="org.opendls.publicclient.controller.ItemDisplayController">
+     <property name="itemService">
+      <ref bean="itemService"/>
+     </property>
+    </bean>
+
+    <bean id="itemMoreInfoController"
+     class="org.opendls.publicclient.controller.ItemMoreInfoController">
+     <property name="itemService">
+      <ref bean="itemService"/>
+     </property>
+     <property name="formView"><value>.views.getmoreinfo</value></property>
+     <property name="successView"><value>.views.getmoreinfosent</value></property>
+     <property name="validator">
+      <bean class="org.opendls.publicclient.validation.ItemMoreInfoValidator"/>
+     </property>
+    </bean>
+
+ <bean id="helpUrlFilenameController"
+  class="org.springframework.web.servlet.mvc.UrlFilenameViewController">
+  <property name="prefix">
+   <value>.views.help.</value> <!-- add in a suffix to work correctly with Tiles -->
+  </property>
+ </bean>
+
+ <!-- ========================= MAPPING DEFINITIONS ========================= -->
+
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.dao.DataAccessException">
+                    dataAccessFailure
+                </prop>
+            </props>
+        </property>
+    </bean>
+
+ <!--
+ <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>
+ -->
+
+ <!--
+ <bean id="themeResolver" class="org.springframework.web.servlet.theme.CookieThemeResolver">
+  <property name="defaultThemeName" value="spring"/>
+   <property name="basenamePrefix">
+   <value>/WEB-INF/themes/default</value>
+  </property>
+ </bean>
+ -->
+
+ <bean id="collectionContextResolver" class="org.opendls.publicclient.servlet.collection.SessionCollectionContextResolver">
+  <property name="defaultCollectionContext" value="base"/>
+ </bean>
+
+ <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+  <property name="mappings">
+   <props>
+    <!-- Main Pages -->
+    <prop key="/home.html">homeController</prop>
+    <prop key="/item.html">itemDisplayController</prop>
+    <prop key="/item/moreinfo.html">itemMoreInfoController</prop>
+   <!-- 	<prop key="/search.html">searchController</prop> -->
+
+    <!-- Help Pages -->
+    <prop key="/help/*.html">helpUrlFilenameController</prop>
+   <!-- 	<prop key="/utils/indexitems.html">indexController</prop> -->
+   </props>
+  </property>
+ </bean>
+
+ <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+  <property name="definitions">
+   <list>
+    <value>/WEB-INF/tiles-defs/definitions.xml</value>
+   </list>
+  </property>
+        <property name="preparerFactoryClass"
+            value="org.springframework.web.servlet.view.tiles2.SimpleSpringPreparerFactory"/>
+ </bean>
+
+ <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+     <property name="prefix" value="_views."/>
+    </bean>
+
+ <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="ApplicationResources"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
+
+ <!--
+ <bean id="messageSource"
+  class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+  <property name="basenames">
+   <list>
+    <value>WEB-INF/theme</value>
+   </list>
+  </property>
+ </bean>
+  -->
+
+</beans>

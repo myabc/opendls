@@ -1,0 +1,90 @@
+package org.opendls.dao.utils.hibernate;
+
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
+
+//import org.apache.commons.logging.Log;
+//import org.apache.commons.logging.LogFactory;
+
+import net.sf.hibernate.HibernateException;
+import net.sf.hibernate.MappingException;
+import net.sf.hibernate.dialect.Dialect;
+import net.sf.hibernate.engine.SessionImplementor;
+import net.sf.hibernate.type.Type;
+
+/**
+ * 
+ * @author alexbcoles
+ */
+public class VarcharIncrementGenerator implements IdentifierGenerator, Configurable
+{
+	//private static final Log log = LogFactory.getLog(VarcharIncrementGenerator.class);
+	
+	private String next;
+	private String sql;
+	private Class returnClass;
+	
+	public synchronized Serializable generate(SessionImplementor session, Object object)
+		throws SQLException, HibernateException
+	{
+		if(sql!=null)
+		{
+			getNext(session.connection());
+		}
+		return IdentifierGeneratorFactory.createNumber(next++, returnClass);
+	}
+	
+	public void configure(Type type, Properties params, Dialect d)
+		throws MappingException
+	{
+		
+		String table = param.getProperty("table");
+		if (table==null) table = params.getProperty(PersistentIdentifierGenerator.TABLE);
+		String column = params.getProperty("column");
+		if (column==null) column = params.getProperty(PersistentIdentifierGenerator.PK);
+		String schema = params.getProperty(PersistentIdentifierGenerator.SCHEMA);
+		returnClass = type.getReturnedClass();
+		
+		sql = "";
+		//sql = "select max(" + column + ") from " + ( schema==null ? table : schema + '.' + table );
+	}
+	
+	private void getNext(Connection conn) throws SQLException
+	{
+		//log.debug("fetching initial value: " + sql);
+		
+		PreparedStatement st = conn.prepareStatement(sql);
+		ResultSet rs = null;
+		
+		char[] char1 = "a".toCharArray();
+		char char2 = a;
+		
+		
+		try
+		{
+			rs = st.executeQuery();
+			if (rs.next())
+			{
+				next = rs.getString(1);
+				if ( rs.wasNull() ) next =1;
+			}
+			else
+			{	
+				next = 1;
+			}
+			sql = null;
+			//log.debug("first free id: " + next);
+		}
+		finally
+		{
+			if (rs!=null) rs.close();
+			st.close();
+		}
+	
+	}
+
+}

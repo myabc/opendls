@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <table name="app_user">
+        <column>id</column>
+        <column>username</column>
+        <column>password</column>
+        <column>first_name</column>
+        <column>last_name</column>
+        <column>address</column>
+        <column>city</column>
+        <column>country</column>
+        <column>email</column>
+        <column>phone_number</column>
+        <column>postal_code</column>
+        <column>province</column>
+        <column>website</column>
+        <column>password_hint</column>
+        <column>version</column>
+        <column>account_enabled</column>
+        <column>account_expired</column>
+        <column>account_locked</column>
+        <column>credentials_expired</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="username">user</value>
+            <value description="password">12dea96fec20593566ab75692c9949596833adc9</value>
+            <value description="first_name">Tomcat</value>
+            <value description="last_name">User</value>
+            <value description="address"></value>
+            <value description="city">Denver</value>
+            <value description="country">US</value>
+            <value description="email">matt_raible@yahoo.com</value>
+            <value description="phone_number"></value>
+            <value description="postal_code">80210</value>
+            <value description="province">CO</value>
+            <value description="website">http://tomcat.apache.org</value>
+            <value description="password_hint"><![CDATA[A male kitty.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="username">admin</value>
+            <value description="password">d033e22ae348aeb5660fc2140aec35850c4da997</value>
+            <value description="first_name">Matt</value>
+            <value description="last_name">Raible</value>
+            <value description="address"></value>
+            <value description="city">Denver</value>
+            <value description="country">US</value>
+            <value description="email">matt@raibledesigns.com</value>
+            <value description="phone_number"></value>
+            <value description="postal_code">80210</value>
+            <value description="province">CO</value>
+            <value description="website">http://raibledesigns.com</value>
+            <value description="password_hint"><![CDATA[Not a female kitty.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+    </table>
+    <table name="role">
+        <column>id</column>
+        <column>name</column>
+        <column>description</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="name">ROLE_ADMIN</value>
+            <value description="description"><![CDATA[Administrator role (can edit Users)]]></value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="name">ROLE_USER</value>
+            <value description="description"><![CDATA[Default role for all Users]]></value>
+        </row>
+    </table>
+    <table name="user_role">
+        <column>user_id</column>
+        <column>role_id</column>
+        <row>
+            <value description="user_id">-1</value>
+            <value description="role_id">-2</value>
+        </row>
+        <row>
+            <value description="user_id">-2</value>
+            <value description="role_id">-1</value>
+        </row>
+    </table>
+  <table name='libraries'>
+   <column>library_Id</column>
+   <column>libraryName</column>
+   <column>contactName</column>
+   <column>contactEmail</column>
+   <column>contactTel</column>
+   <column>contactFax</column>
+   <column>ownerName</column>
+   <column>ownerOrgCode</column>
+   <!--  <column>virtual</column> -->
+   <!--  <column>virtualType</column> -->
+   <column>showInList</column>
+
+   <row>
+            <value>ad</value>
+            <value>Historic Image Library</value>
+            <value>Tyrone Bevan</value>
+            <value>Tyrone_Bevan@opendls.org</value>
+            <value>(713) 458-2155</value>
+            <value></value>
+            <value>Clinton Bonavita</value>
+            <value>3</value>
+            <!-- <value>0</value> -->
+            <!-- <value></value> -->
+            <value>1</value>
+   </row>
+   <row>
+            <value>ac</value>
+            <value>NCTC Historical Image Library</value>
+            <value>Harriett Knicely</value>
+            <value>harriett+knicely@gmail.com</value>
+            <value></value>
+            <value></value>
+            <value>Harriett Knicely</value>
+            <value>3</value>
+            <!-- <value>0</value> -->
+            <!-- <value></value> -->
+            <value>0</value>
+   </row>
+ <row>
+            <value>ae</value>
+            <value>Washington DC Library</value>
+            <value>Cody Kaneshiro</value>
+            <value>images@opendls.org</value>
+            <value>(713) 458-2144</value>
+            <value></value>
+            <value>Max Kilkenny</value>
+            <value>3</value>
+            <!--<value>0</value>
+            <value></value>-->
+            <value>1</value>
+        </row>
+ <row>
+            <value>r4</value>
+            <value>Southwest Image</value>
+            <value>Christian Sesco</value>
+            <value>christian Sesco@opendls.org</value>
+            <value>(305) 248-6912</value>
+            <null/>
+            <value>Christian Sesco</value>
+            <value>3</value>
+            <value>0</value>
+        </row>
+ <row>
+            <value>r7</value>
+            <value>Alaska Image Library</value>
+            <value>Darren Frisbee</value>
+            <value>dfrisbee@opendls.org</value>
+            <value>(917) 786-4909</value>
+            <value>(917) 786-4844</value>
+            <value>Darren Frisbee</value>
+            <value>3</value>
+            <value>1</value>
+        </row>
+ <row>
+            <value>aa</value>
+            <value>National Image Library</value>
+            <value>Kurt Watwood</value>
+            <value>images@opendls.org</value>
+            <null/>
+            <null/>
+            <value>Kelly Villacorta</value>
+            <value>3</value>
+            <value>0</value>
+        </row>
+ <row>
+            <value>ab</value>
+            <value>USGS Image Library</value>
+            <value>Chandra Cressey</value>
+            <value>chandra_cressey@usgs.gov</value>
+            <null/>
+            <null/>
+            <value>USGS</value>
+            <value>3</value>
+            <value>0</value>
+        </row>
+ <row>
+            <value>af</value>
+            <value>Midwest Image Library</value>
+            <value>Cody Horrell</value>
+            <value>chorrell@opendls.org</value>
+            <value>(602) 703-5338</value>
+            <value>(602) 703-5292</value>
+            <value>Cody Horrell</value>
+            <value>3</value>
+            <value>0</value>
+        </row>
+ <row>
+            <value>ag</value>
+            <value>Southeast Image Library</value>
+            <value>Fernando Podkowka</value>
+            <value>fernando_podkowka@opendls.org</value>
+            <value>(402) 879-7292</value>
+            <value>(402) 879-7286</value>
+            <value>Fernando Podkowka</value>
+            <value>3</value>
+            <value>1</value>
+        </row>
+ <row>
+            <value>ah</value>
+            <value>Pacific Image Library</value>
+            <value>Patty Molander</value>
+            <value>patty_molander@opendls.org</value>
+            <value>(917) 736-2452</value>
+            <value>(917) 736-2844</value>
+            <value>John Eckert</value>
+            <value>3</value>
+            <value>1</value>
+        </row>
+ <row>
+            <value>ai</value>
+            <value>NCTC Image Library</value>
+            <value>Erik Picha</value>
+            <value>erik_picha@opendls.org</value>
+            <value>(302) 176-6765</value>
+            <value>(302) 176-7241</value>
+            <value>Erik Picha</value>
+            <value>3</value>
+            <value>1</value>
+        </row>
+ <row>
+            <value>aj</value>
+            <value>Mountain-Prairie</value>
+            <value>Margery Starkweather</value>
+            <value>margery_starkweather@opendls.org</value>
+            <value>(103) 236-4487</value>
+            <null/>
+            <value>Margery Starkweather</value>
+            <value>3</value>
+            <value>1</value>
+        </row>
+ <row>
+            <value>ak</value>
+            <value>Northeast Image Library</value>
+            <value>Kurt Flythe</value>
+            <value>kurt_flythe@opendls.org</value>
+            <value>(415) 553-8328</value>
+            <null/>
+            <value>Kurt Flythe</value>
+            <value>3</value>
+            <value>1</value>
+        </row>
+ <row>
+            <value>al</value>
+            <value>BLM Image Library</value>
+            <value>ted Worthley</value>
+            <value>ted+Worthley@blm.gov</value>
+            <value>(303) 452-0363</value>
+            <null/>
+            <value>ted Worthley</value>
+            <value>3</value>
+            <value>0</value>
+        </row>
+  </table>
+
+  <table name="formats">
+   <column>DEFAULTEXTENSION</column>
+   <column>EMBEDOBJECTCODE</column>
+   <column>FORMATNAME</column>
+   <column>FORMAT_ID</column>
+   <column>GENERATETHUMBNAIL</column>
+   <column>OPENINBROWSER</column>
+   <column>TYPE_ID</column>
+
+   <row>
+    <value>gif</value>
+    <null/>
+    <value>GIF image</value>
+    <value>image/gif</value>
+    <value>1</value>
+    <value>1</value>
+    <value>14</value>
+   </row>
+   <row>
+    <value>jpeg</value>
+    <null/>
+    <value>JPEG Image</value>
+    <value>image/pjpeg</value>
+    <value>1</value>
+    <value>1</value>
+    <value>14</value>
+   </row>
+   <row>
+    <value>js</value>
+    <null/>
+    <value>JScript Script File</value>
+    <value>application/x-javascript</value>
+    <value>1</value>
+    <value>1</value>
+    <value>9</value>
+   </row>
+   <row>
+    <value>mpg</value>
+    <null/>
+    <value>MPEG movie</value>
+    <value>video/mpeg</value>
+    <value>0</value>
+    <value>0</value>
+    <value>13</value>
+   </row>
+   <row>
+    <value>mov</value>
+    <null/>
+    <value>Quicktime movie</value>
+    <value>video/quicktime</value>
+    <value>0</value>
+    <value>0</value>
+    <value>13</value>
+   </row>
+   <row>
+    <value>pdf</value>
+    <null/>
+    <value>Adobe Acrobat Document</value>
+    <value>application/pdf</value>
+    <value>0</value>
+    <value>0</value>
+    <value>12</value>
+   </row>
+   <row>
+    <value>html</value>
+    <null/>
+    <value>HTML document</value>
+    <value>text/html</value>
+    <value>0</value>
+    <value>0</value>
+    <value>12</value>
+   </row>
+   <row>
+    <value>wav</value>
+    <null/>
+    <value>WAV sound file</value>
+    <value>audio/x-wav</value>
+    <value>0</value>
+    <value>1</value>
+    <value>10</value>
+   </row>
+   <row>
+    <value>au</value>
+    <null/>
+    <value>UNIX sound file</value>
+    <value>audio/basic</value>
+    <value>0</value>
+    <value>1</value>
+    <value>10</value>
+   </row>
+   <row>
+    <value>txt</value>
+    <null/>
+    <value>ASCII text document</value>
+    <value>text/plain</value>
+    <value>0</value>
+    <value>1</value>
+    <value>12</value>
+   </row>
+   <row>
+    <value>avi</value>
+    <null/>
+    <value>Windows movie</value>
+    <value>video/x-msvideo</value>
+    <value>0</value>
+    <value>1</value>
+    <value>13</value>
+   </row>
+   <row>
+    <value>aif</value>
+    <null/>
+    <value>AIFF sound file</value>
+    <value>audio/x-aiff</value>
+    <value>0</value>
+    <value>1</value>
+    <value>10</value>
+   </row>
+   <row>
+    <value>jpg</value>
+    <null/>
+    <value>JPEG image</value>
+    <value>image/jpeg</value>
+    <value>1</value>
+    <value>1</value>
+    <value>14</value>
+   </row>
+   <row>
+    <value>tif</value>
+    <null/>
+    <value>TIFF image</value>
+    <value>image/tiff</value>
+    <value>0</value>
+    <value>0</value>
+    <value>14</value>
+   </row>
+   <row>
+    <value>png</value>
+    <null/>
+    <value>Portable Network Graphics file</value>
+    <value>image/x-png</value>
+    <value>0</value>
+    <value>1</value>
+    <value>14</value>
+   </row>
+   <row>
+    <value>mp3</value>
+    <null/>
+    <value>MP3 Format Sound</value>
+    <value>audio/mpeg</value>
+    <value>0</value>
+    <value>0</value>
+    <value>10</value>
+   </row>
+   <row>
+    <value>mid</value>
+    <null/>
+    <value>MIDI music data</value>
+    <value>x-music/x-midi</value>
+    <value>0</value>
+    <value>0</value>
+    <value>10</value>
+   </row>
+   <row>
+    <value>rtf</value>
+    <null/>
+    <value>Microsoft Rich Text Format</value>
+    <value>application/rtf</value>
+    <value>0</value>
+    <value>0</value>
+    <value>12</value>
+   </row>
+   <row>
+    <value>eps</value>
+    <null/>
+    <value>Postscript file</value>
+    <value>application/postscript</value>
+    <value>0</value>
+    <value>0</value>
+    <value>14</value>
+   </row>
+   <row>
+    <value>doc</value>
+    <null/>
+    <value>Microsoft Word Document</value>
+    <value>application/msword</value>
+    <value>0</value>
+    <value>0</value>
+    <value>12</value>
+   </row>
+   <row>
+    <value>wpd</value>
+    <null/>
+    <value>Corel Wordperfect Document</value>
+    <value>application/wordperfect5.1</value>
+    <value>0</value>
+    <value>0</value>
+    <value>12</value>
+   </row>
+   <row>
+    <value>zip</value>
+    <null/>
+    <value>ZIP Archive</value>
+    <value>application/zip</value>
+    <value>0</value>
+    <value>0</value>
+    <value>1</value>
+   </row>
+   <row>
+    <value>ppt</value>
+    <null/>
+    <value>Microsoft Powerpoint Presentation</value>
+    <value>application/mspowerpoint</value>
+    <value>0</value>
+    <value>0</value>
+    <value>4</value>
+   </row>
+   <row>
+    <value>xls</value>
+    <null/>
+    <value>Microsoft Excel Spreadsheet</value>
+    <value>application/ms-excel</value>
+    <value>1</value>
+    <value>1</value>
+    <value>2</value>
+   </row>
+   <row>
+    <value>xsl</value>
+    <null/>
+    <value>Microsoft Excel Spreadsheet</value>
+    <value>application/vnd.ms-excel</value>
+    <value>0</value>
+    <value>0</value>
+    <value>2</value>
+   </row>
+   <row>
+    <value>swf</value>
+    <null/>
+    <value>Macromedia Flash SWF</value>
+    <value>application/x-shockwave-flash</value>
+    <value>0</value>
+    <value>1</value>
+    <value>13</value>
+   </row>
+  </table>
+  <table name="DATA">
+    <column>data_Id</column>
+    <column>title</column> <!-- not null -->
+    <column>description_abstract</column>
+    <column>description_tableOfContents</column>
+    <column>title_alternative</column>
+    <column>creator</column>
+    <column>subject</column>
+    <column>publisher</column>
+    <column>contributor_orgCode</column>
+    <column>contributor</column>
+    <column>date_created</column>
+    <column>date_modified</column> <!-- not null -->
+    <column>date_valid</column>
+    <column>date_available</column>
+    <column>date_issued</column> <!-- not null -->
+    <column>relation_isVersionOf</column>
+    <column>relation_hasVersion</column>
+    <column>relation_isReplacedBy</column>
+    <column>relation_replaces</column>
+    <column>relation_isRequiredBy</column>
+    <column>relation_requires</column>
+    <column>relation_isPartOf</column>
+    <column>relation_hasPart</column>
+    <column>relation_isReferencedBy</column>
+    <column>relation_references</column>
+    <column>relation_isFormatOf</column>
+    <column>relation_hasFormat</column>
+    <column>coverage_temporal</column>
+    <column>coverage_spatial_minLat</column>
+    <column>coverage_spatial_minLong</column>
+    <column>coverage_spatial_maxLat</column>
+    <column>coverage_spatial_maxLong</column>
+    <column>rights</column>
+    <column>audience</column>
+    <column>dataCreator_email</column>
+    <column>dataCreator_name</column> <!-- not null -->
+    <column>language_Id</column>
+    <column>source</column>
+    <column>status</column>
+    <column>library_Id</column> <!-- not null -->
+
+    <row>
+        <value description="data_Id">926E60DA-8354-4852-BA7AED69024D7C26</value>
+        <value description="title">Bear in Camp</value> <!-- not null -->
+        <value description="description_abstract">Brown bear standing in camp.</value>
+        <null/>
+        <null/>
+        <value description="creator">National Parks Service</value>
+        <value description="subject">Species,Animals,Mammals,Recreation,Camping,ARLIS,Alaska</value>
+        <value description="publisher">National Parks Service</value>
+        <value description="contributor_orgCode">70160</value>
+        <value description="contributor">ASSISTANT REGIONAL DIRECTOR-EXTERNAL AFFAIRS</value>
+        <null/>
+        <value description="date_modified">2004-12-28</value> <!-- not null -->
+        <null/>
+        <value description="date_available">2002-05-08</value>
+        <value description="date_issued">2001-11-14</value> <!-- not null -->
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <value description="dataCreator_email">mathew_fetterolf@opendls.org</value>
+        <value description="dataCreator_name">Mathew Fetterolf</value>
+        <value description="language_Id">en</value>
+        <value description="source">NPS-5120</value>
+        <value description="status">2</value>
+        <value description="library_Id">ad</value>
+    </row>
+    <!--
+   <row>
+        <value description="data_Id">926E60DA-8354-4852-BA7AED69024D7C26</value>
+        <value description="title">Bear in Camp</value>
+        <value description="description_abstract"></value>
+        <value description="description_tableOfContents"></value>
+        <value description="title_alternative"></value>
+        <value description="creator"></value>
+        <value description="subject"></value>
+        <value description="publisher"></value>
+        <value description="contributor_orgCode"></value>
+        <value description="contributor"></value>
+        <value description="date_created"></value>
+        <value description="date_modified"></value>
+        <value description="date_valid"></value>
+        <value description="date_available"></value>
+        <value description="date_issued"></value>
+        <value description="relation_isVersionOf"></value>
+        <value description="relation_hasVersion"></value>
+        <value description="relation_isReplacedBy"></value>
+        <value description="relation_replaces"></value>
+        <value description="relation_isRequiredBy"></value>
+        <value description="relation_requires"></value>
+        <value description="relation_isPartOf"></value>
+        <value description="relation_hasPart"></value>
+        <value description="relation_isReferencedBy"></value>
+        <value description="relation_references"></value>
+        <value description="relation_isFormatOf"></value>
+        <value description="relation_hasFormat"></value>
+        <value description="coverage_temporal"></value>
+        <value description="coverage_spatial_minLat"></value>
+        <value description="coverage_spatial_minLong"></value>
+        <value description="coverage_spatial_maxLat"></value>
+        <value description="coverage_spatial_maxLong"></value>
+        <value description="rights"></value>
+        <value description="audience"></value>
+        <value description="dataCreator_email"></value>
+        <value description="dataCreator_name"></value>
+        <value description="language_Id"></value>
+        <value description="source"></value>
+        <value description="status"></value>
+        <value description="library_Id"></value>
+    </row>
+        -->
+</table>
+
+</dataset>
+

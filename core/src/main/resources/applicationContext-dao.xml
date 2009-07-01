@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+       default-lazy-init="true">
+
+    <!-- EntityManagerFactory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitManager" ref="persistenceUnitManager"/>
+        <property name="jpaProperties">
+            <value>
+                hibernate.dialect=${hibernate.dialect}
+                hibernate.query.substitutions=true 'Y', false 'N'
+                hibernate.cache.use_second_level_cache=true
+                hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+            </value>
+            <!-- Turn batching off for better error messages under PostgreSQL -->
+            <!-- hibernate.jdbc.batch_size=0 -->
+        </property>
+    </bean>
+
+    <bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+        <property name="persistenceXmlLocations">
+            <list>
+                <value>classpath:META-INF/persistence.xml</value>
+            </list>
+        </property>
+        <property name="defaultDataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- Needed so the @PersistenceUnit annotation is recognized -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+    <!-- Transaction manager for a single EntityManagerFactory (alternative to JTA) -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <!-- UniversalDao - can be used when doing standard CRUD - made available
+        for those who don't mind casting.  If you don't want to cast, look at
+        'fooDao' below. -->
+    <bean id="universalDao" class="org.opendls.dao.jpa.UniversalDaoJpa"/>
+
+    <!-- LookupDao - can be used when doing standard CRUD -->
+    <bean id="lookupDao" class="org.opendls.dao.jpa.LookupDaoJpa"/>
+
+    <!-- UserDao: JPA implementation -->
+    <bean id="userDao" class="org.opendls.dao.jpa.UserDaoJpa">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+    <!-- RoleDao: JPA implementation -->
+    <bean id="roleDao" class="org.opendls.dao.jpa.RoleDaoJpa"/>
+
+    <!-- If you want to be able to do simple CRUD for new domain objects without
+        having to cast, you don't have create a Dao interface and implementation
+        for that domain object, you simply have to do the following.
+
+        <bean id="fooDao" class="org.opendls.dao.jpa.GenericDaoJpa">
+            <constructor-arg value="org.opendls.model.Foo"/>
+        </bean>
+
+        You will need to create a Dao interface and implementation for that
+        domain object if you need more than simple CRUD to occur.
+        (finders, bulk update/delete, etc.) eg... 'fooDao'
+    -->
+
+    <!-- Add new DAOs here -->
+
+</beans>

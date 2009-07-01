@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Format">
+
+ <resultMap id="result" class="org.opendls.model.Format">
+  <result property="id" column="format_Id" />
+     <result property="name" column="formatName" />
+     <result property="defaultExtension" column="defaultExtension" />
+     <result property="openInBrowser" column="openInBrowser" />
+     <result property="embedObjectCode" column="embedObjectCode" />
+     <result property="generateThumbnail" column="generateThumbnail"/>
+     <result property="dcType" column="type_Id"/>
+ </resultMap>
+
+<!--
+public static final String ANALYSE_FORMAT_SQL =
+    "SELECT " +
+    "     t.typeName, " +
+    "     f.format_Id, " +
+    "     f.generateThumbnail " +
+    "FROM " +
+    "     types t, formats f " +
+    "WHERE " +
+    "     t.type_Id = f.type_Id AND " +
+    "     f.defaultExtension = ? ";
+
+// Check the record doesn't already exist
+public static final String CHECK_FORMAT_EXISTS_SQL =
+    "SELECT  COUNT(format_Id) AS countValue " +
+    "FROM    formats " +
+    "WHERE   format_Id= ? ";
+
+public static final String GET_TYPES_SQL =
+    "SELECT  type_id, typeName, definition " +
+    "FROM types";
+
+public static final String INSERT_FORMAT_SQL =
+    "INSERT INTO "+
+    "    formats(format_Id,formatName,defaultExtension," +
+    "        generateThumbnail,type_Id) "+
+    "VALUES "+
+    "    ('#form.format_Id#', "+
+    "    '#form.formatName#', "+
+    "    '#form.defaultExtension#', "+
+    "    #val(form.generateThumbnail)#, "+
+    "    #val(form.type_Id)#)";
+-->
+
+</sqlMap>

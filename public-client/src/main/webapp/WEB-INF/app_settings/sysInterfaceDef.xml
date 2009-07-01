@@ -1,0 +1,102 @@
+<wddxPacket version='1.0'>
+ <header></header>
+ <data>
+  <struct>
+   <var name='COLORS'>
+   <struct>
+    <var name='AHOVER'>
+     <string>ffffff</string>
+    </var>
+    <var name='AHOVERBACKGROUND'>
+     <string>0000cc</string>
+    </var>
+    <var name='ALINK'>
+     <string>0000cc</string>
+    </var>
+    <var name='ALINKBACKGROUND'>
+     <string>ffffff</string>
+    </var>
+    <var name='BODY'>
+     <string>000000</string>
+    </var>
+    <var name='BODYBACKGROUND'>
+     <string>ffffff</string>
+    </var>
+    <var name='CONTENTBACKGROUND'>
+     <string>ffffff</string>
+    </var>
+    <var name='CONTROLS1'>
+     <string>ffffff</string>
+    </var>
+    <var name='CONTROLS1BACKGROUND'>
+     <string>33cc00</string>
+    </var>
+    <var name='CONTROLS2'>
+     <string>ffffff</string>
+    </var>
+    <var name='CONTROLS2BACKGROUND'>
+     <string>33cc33</string>
+    </var>
+    <var name='HEADERS'>
+     <string>003399</string>
+    </var>
+    <var name='LEFTAREA'>
+     <string>000000</string>
+    </var>
+    <var name='LEFTAREABACKGROUND'>
+     <string>eeeeee</string>
+    </var>
+    <var name='LEFTBOX'>
+     <string>003399</string>
+    </var>
+    <var name='LEFTBOXBACKGROUND'>
+     <string>ffffff</string>
+    </var>
+    <var name='LEFTBOXHEAD'>
+     <string>ffffff</string>
+    </var>
+    <var name='LEFTBOXHEADBACKGROUND'>
+     <string>003399</string>
+    </var>
+    <var name='RESULTSCELL1'>
+     <string>efefef</string>
+    </var>
+    <var name='RESULTSCELL1A'>
+     <string>efefef</string>
+    </var>
+    <var name='RESULTSCELL2'>
+     <string>ffffff</string>
+    </var>
+    <var name='RESULTSCELL2A'>
+     <string>ffffff</string>
+    </var>
+    <var name='TABS'>
+     <string>ffffff</string>
+    </var>
+    <var name='TABSBACKGROUND'>
+     <string>333333</string>
+    </var>
+   </struct>
+  </var>
+  <var name='FONTS'>
+  <struct>
+  <var name='BODY'>
+  <string>Verdana,sans-serif</string>
+  </var>
+  <var name='CONTROLS'>
+  <string>Verdana,Arial,Helvetica,sans-serif</string>
+  </var>
+  <var name='HEADERS'>
+  <string>Arial,Helvetica,sans-serif</string>
+  </var>
+  </struct>
+  </var>
+  <var name='HTMLFOOT'>
+  <string> </string>
+  </var>
+  <var name='HTMLHEAD'>
+  <string>&lt;table width="100%" cellspacing="0" cellpadding="0" border="0"&gt;<char code='0A'/>&lt;tr&gt;<char code='0A'/><char code='09'/>&lt;td rowspan="2" width="150"&gt;&lt;img src="lib_assets/_dls/headerbanner_logos.jpg" width="150" height="130" border="0" alt="" /&gt;&lt;/td&gt;<char code='0A'/><char code='09'/>&lt;td width="470"&gt;&lt;img src="lib_assets/_dls/headerbanner_title.gif" width="470" height="85" border="0" alt="" /&gt;&lt;/td&gt;<char code='0A'/><char code='09'/>&lt;td rowspan="2" width="100%" style="background-image: url(lib_assets/_dls/headerbanner_bkgrnd.gif);"&gt;&lt;/td&gt;<char code='0A'/>&lt;/tr&gt;<char code='0A'/>&lt;tr&gt;<char code='0A'/><char code='09'/>&lt;td&gt;&lt;img src="lib_assets/_dls/headerbanner_subtitle.gif" width="470" height="45" border="0" alt="Gateway to Digital Media" /&gt;&lt;/td&gt;<char code='0A'/>&lt;/tr&gt;<char code='0A'/>&lt;/table&gt;</string>
+  </var>
+  </struct>
+ </data>
+</wddxPacket>

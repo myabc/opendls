@@ -1,0 +1,1 @@
+mvn install:install-file -DgroupId=com.allaire -DartifactId=wddx -Dversion=1.0.0 -Dpackaging=jar -Dfile=/Users/alexbcoles/Documents/workspace/dls/lib/wddx.jar
